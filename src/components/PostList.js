@@ -24,12 +24,11 @@ class PostList extends Component{
 
     render() {
         return (
-            <div>
-                List of Posts
+            <div className="left">
                 {
                     this.state.posts.length ? this.state.posts.map(
                         post=>
-                            <div key={post.id}>
+                            <div className="display" key={post.id}>
                                 <p>Blog ID: {post.id}</p>
                                 <p>Title: {post.title}</p>
                                 <p>Body: {post.body}</p>

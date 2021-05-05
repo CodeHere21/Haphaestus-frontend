@@ -6,6 +6,9 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
+      <div className="header">
+          <h2>Haphaestus</h2>
+      </div>
     <App />
   </React.StrictMode>,
   document.getElementById('root')

@@ -13,5 +13,28 @@ code {
 }
 
 div{
+
+}
+
+.display{
+  background-color: #fbcf61;
+
+}
+.left{
   padding: 20px;
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 200px;
+  overflow-x: hidden;
+  left: 0;
+}
+
+.header {
+  padding: 30px;
+  font-size: 40px;
+  text-align: center;
+  background: #fbe661;
+  top:0;
 }
