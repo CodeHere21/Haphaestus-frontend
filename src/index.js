@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import PostList from "./components/PostList";
+import TagCloud from "./components/TagCloud";
 
 ReactDOM.render(
   <React.StrictMode>
       <div className="header">
           <h2>Haphaestus</h2>
       </div>
-    <App />
+      <PostList/>
+      <TagCloud/>
   </React.StrictMode>,
   document.getElementById('root')
 );

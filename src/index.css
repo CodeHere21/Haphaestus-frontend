@@ -31,6 +31,19 @@ div{
   left: 0;
 }
 
+
+.right{
+  background-color: #b3fb61;
+  padding: 20px;
+  height: 30%;
+  width: 30%;
+  position: absolute;
+  z-index: 1;
+  top: 270px;
+  overflow-x: hidden;
+  right: 40px;
+}
+
 .header {
   padding: 30px;
   font-size: 40px;
