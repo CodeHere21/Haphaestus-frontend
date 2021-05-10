@@ -10,7 +10,7 @@ class TagCloud extends React.Component{
         }
     }
     componentDidMount() {
-        axios.get('https://hephaestus-backendv1.herokuapp.com/tags')
+        axios.get('https://hephaestus-backendv1.herokuapp.com/tags/tagcloud')
             .then(response => {
                 console.log(response)
                 this.setState({tags:response.data})
@@ -26,8 +26,8 @@ class TagCloud extends React.Component{
                 <h4>TAG CLOUD</h4>
                 {
                     this.state.tags.length ? this.state.tags.map(
-                        tag=>
-                            <a  key={tag.id}>{tag.label}       #</a>):
+                        (tag, i)=>
+                            <a  key={i}>{tag}       #</a>):
                         <div><h3>Tags not found!</h3></div>
                 }
             </div>
