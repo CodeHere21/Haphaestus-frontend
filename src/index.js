@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import PostList from "./components/PostList";
-import TagCloud from "./components/TagCloud";
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -11,7 +11,6 @@ ReactDOM.render(
           <h2>Haphaestus</h2>
       </div>
       <PostList/>
-      <TagCloud/>
   </React.StrictMode>,
   document.getElementById('root')
 );

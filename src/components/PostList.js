@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import TagCloud from "./TagCloud";
 
 
 function TagList(props){
@@ -31,6 +32,7 @@ class PostList extends React.Component{
         }
         this.fwdClick=this.fwdClick.bind(this);
         this.prevClick=this.prevClick.bind(this);
+        this.tagClick=this.tagClick.bind(this);
     }
     componentDidMount(){
         axios.get('https://hephaestus-backendv1.herokuapp.com/posts')
@@ -51,8 +53,21 @@ class PostList extends React.Component{
         const newStep=  this.state.step>0?this.state.step-5:0
         this.setState({step: newStep, display:this.state.posts.slice(newStep, newStep+5)})
     }
+    tagClick(i){
+        const filter='https://hephaestus-backendv1.herokuapp.com/posts/bytag/'+i;
+        axios.get(filter)
+            .then(response => {
+                console.log(response)
+                this.setState({display:response.data})
+            })
+            .catch(error=>{
+                console.log(error)
+                this.setState({errorMessage:"We got a problem"})
+            })
+    }
     render() {
         return (
+            <div>
             <div className="left">
                 {
                     this.state.display.length ? this.state.display.map(
@@ -66,6 +81,8 @@ class PostList extends React.Component{
                         <div><h3>End of Archives!</h3></div>
                 }
                 <div><button onClick={this.prevClick}>Previous 5 Entries</button><button onClick={this.fwdClick}>Next 5 Entries</button></div>
+            </div>
+                <TagCloud filter={this.tagClick}/>
             </div>
         )
     }

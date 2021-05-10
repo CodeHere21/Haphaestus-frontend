@@ -1,5 +1,6 @@
 import axios from "axios";
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+
 
 class TagCloud extends React.Component{
     constructor(props) {
@@ -27,7 +28,7 @@ class TagCloud extends React.Component{
                 {
                     this.state.tags.length ? this.state.tags.map(
                         (tag, i)=>
-                            <a  key={i}>{tag}       #</a>):
+                            <button onClick={(e)=>this.props.filter(tag)} key={i}>#{tag}</button>):
                         <div><h3>Tags not found!</h3></div>
                 }
             </div>
