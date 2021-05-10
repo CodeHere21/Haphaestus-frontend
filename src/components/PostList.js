@@ -33,6 +33,7 @@ class PostList extends React.Component{
         this.fwdClick=this.fwdClick.bind(this);
         this.prevClick=this.prevClick.bind(this);
         this.tagClick=this.tagClick.bind(this);
+        this.homeClick=this.homeClick.bind(this);
     }
     componentDidMount(){
         axios.get('https://hephaestus-backendv1.herokuapp.com/posts')
@@ -58,13 +59,18 @@ class PostList extends React.Component{
         axios.get(filter)
             .then(response => {
                 console.log(response)
-                this.setState({display:response.data})
+                this.setState({step:0, display:response.data})
             })
             .catch(error=>{
                 console.log(error)
                 this.setState({errorMessage:"We got a problem"})
             })
     }
+    homeClick(){
+        this.setState({step:0, display:this.state.posts.slice(0,5)})
+    }
+
+
     render() {
         return (
             <div>
@@ -80,7 +86,7 @@ class PostList extends React.Component{
                             </div>):
                         <div><h3>End of Archives!</h3></div>
                 }
-                <div><button onClick={this.prevClick}>Previous 5 Entries</button><button onClick={this.fwdClick}>Next 5 Entries</button></div>
+                <div><button onClick={this.prevClick}>Previous 5 Entries</button><button onClick={this.homeClick}>Refresh</button><button onClick={this.fwdClick}>Next 5 Entries</button></div>
             </div>
                 <TagCloud filter={this.tagClick}/>
             </div>

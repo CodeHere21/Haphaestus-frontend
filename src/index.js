@@ -11,6 +11,7 @@ ReactDOM.render(
           <h2>Haphaestus</h2>
       </div>
       <PostList/>
+      <div className="newPost"><h3>Make New Post</h3></div>
   </React.StrictMode>,
   document.getElementById('root')
 );
