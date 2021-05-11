@@ -3,13 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import PostList from "./components/PostList";
+import Navigation from "./Navigation"
 
 
 ReactDOM.render(
   <React.StrictMode>
       <div className="header">
-          <h2>Haphaestus</h2>
+          <h2>Hephaestus</h2>
       </div>
+
+      <Navigation/>
+      <br/>
+
+      <br/>
       <PostList/>
       <div className="newPost"><h3>Make New Post</h3></div>
   </React.StrictMode>,
