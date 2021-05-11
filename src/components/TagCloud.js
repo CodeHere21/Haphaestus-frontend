@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from 'react'
 
-
+//Component displaying the tag cloud, a filter for each existing tag
 class TagCloud extends React.Component{
     constructor(props) {
         super(props)
@@ -35,5 +35,4 @@ class TagCloud extends React.Component{
         )
     }
 }
-
 export default TagCloud;
