@@ -37,11 +37,10 @@ div{
   padding: 20px;
   height: 30%;
   width: 30%;
-  position: absolute;
   z-index: 1;
-  top: 270px;
+  bottom: 1000px;
   overflow-x: hidden;
-  right: 40px;
+  right:-700px;
 }
 
 .newPost{
@@ -51,14 +50,19 @@ div{
   width: 20%;
   position: absolute;
   z-index: 1;
-  top: 600px;
-  right: 100px;
+  top: 300px;
+  right: 150px;
 }
 
-.header {
-  padding: 5px;
+
+.centered{
+  text-align:center;
+}
+
+h2{
   font-size: 40px;
-  text-align: center;
-  background: #fbe661;
-  top:0;
+}
+
+.gitLink{
+  font-size: 20px;
 }
