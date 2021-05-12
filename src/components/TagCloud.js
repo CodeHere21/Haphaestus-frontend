@@ -1,5 +1,8 @@
 import axios from "axios";
-import React from 'react'
+import React from 'react';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+
 
 //Component displaying the tag cloud, a filter for each existing tag
 class TagCloud extends React.Component{
@@ -23,15 +26,18 @@ class TagCloud extends React.Component{
     }
     render() {
         return (
-            <div className="right">
-                <h4>TAG CLOUD</h4>
+            <Card>
+                <Card.Body>
+                <Card.Title className="centered">TAG CLOUD</Card.Title>
                 {
                     this.state.tags.length ? this.state.tags.map(
                         (tag, i)=>
-                            <button onClick={(e)=>this.props.filter(tag)} key={i}>#{tag}</button>):
+                            <Button variant="link" onClick={(e)=>this.props.filter(tag)} key={i}>#{tag}</Button>):
                         <div><h3>Tags not found!</h3></div>
                 }
-            </div>
+                <div className="centered"><Button variant="secondary">Create New Post</Button></div>
+            </Card.Body>
+            </Card>
         )
     }
 }

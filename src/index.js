@@ -8,16 +8,11 @@ import Navigation from "./Navigation"
 
 ReactDOM.render(
   <React.StrictMode>
-      <div className="header">
-          <h2>Hephaestus</h2>
-      </div>
-
       <Navigation/>
       <br/>
 
       <br/>
       <PostList/>
-      <div className="newPost"><h3>Make New Post</h3></div>
   </React.StrictMode>,
   document.getElementById('root')
 );

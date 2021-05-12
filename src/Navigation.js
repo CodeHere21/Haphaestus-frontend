@@ -9,6 +9,7 @@ const Navigation = () => {
             <Navbar className="nav-bar-container" bg="light" variant="light" sticky="top">
                 <Container>
                 <Navbar.Brand href="#home">Hephaestus</Navbar.Brand>
+                    <a className="gitLink" href='https://github.com/Abielf/Haphaestus-frontend'>github link</a>
                 <Nav className="mr-auto">
                     <Nav.Link href="/posts">Home </Nav.Link>
                     <Nav.Link href="/posts/{id}"> Create Post</Nav.Link>

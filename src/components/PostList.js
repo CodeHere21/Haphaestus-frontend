@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import TagCloud from "./TagCloud";
+import Button from 'react-bootstrap/Button';
+import {ButtonGroup, Container} from "react-bootstrap";
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 //component displays the list of tags each blog post has attached
 function TagList(props){
@@ -16,24 +21,30 @@ function TagList(props){
     return(
         <p>TAGS:
         {tags.map((tag, i)=>(
-            <a key={i}> {tag.label}, </a>
+            <p key={i}> {tag.label}, </p>
         ))
     }   </p>)
 }
 
 function PostNav(props){
-return( <div className={"left"}>
+return( <Card>
         {props.showList.length ? props.showList.map(
-            post=> <div className="display" key={post.id}>
-                <p>Blog ID: {post.id}</p>
-                <p>Title: {post.title}</p>
-                <p>By: {post.author}</p>
-                <button onClick={props.gone}>Show Post</button>
-            </div>
-        ):<div><h3>End of Archives!</h3></div>}
-    <button onClick={props.prev}>Previous 5 Entries</button><button onClick={props.hom}>Refresh</button><button onClick={props.fwd}>Next 5 Entries</button>
-        </div>)
+            post=> <Card.Body  key={post.id}>
+                <Card.Title>Title: {post.title}</Card.Title>
+                <Card.Subtitle>By: {post.author}</Card.Subtitle>
+                <Button variant="primary" onClick={props.gone}>Show Post</Button>
+                <TagList value={post.id}/>
+            </Card.Body>
+        ):<Card.Body><Card.Title>End of Archives!</Card.Title></Card.Body>}
+        <ButtonGroup>
+    <Button variant="secondary" onClick={props.prev}>Previous 5 Entries</Button><Button variant="primary" onClick={props.hom}>Refresh</Button><Button variant="secondary" onClick={props.fwd}>Next 5 Entries</Button>
+        </ButtonGroup>
+        </Card>)
     }
+
+function Placeholder(){
+    return(<div>Show Post Component goes here lol</div>)
+}
 
 class PostList extends React.Component {
           constructor(props) {
@@ -91,12 +102,15 @@ class PostList extends React.Component {
           }
 
           render(){
-                    return (<div>
-                        {!this.state.isHidden &&
+                    return (<Container>
+                        <Row>
+                        <Col>{!this.state.isHidden &&
                         <PostNav showList={this.state.display} prev={this.prevClick}
                                  hom={this.homeClick} fwd={this.fwdClick} gone={this.bodyClick}/>}
-                        <TagCloud filter={this.tagClick}/>
-                    </div>)
+                            {this.state.isHidden && <Placeholder/>}</Col>
+                        <Col><TagCloud filter={this.tagClick}/></Col>
+                        </Row>
+                    </Container>)
                 }
 }
 
