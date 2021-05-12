@@ -6,6 +6,7 @@ import {ButtonGroup, Container} from "react-bootstrap";
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Comments from "./Comments";
 
 //component displays the list of tags each blog post has attached
 function TagList(props){
@@ -21,40 +22,44 @@ function TagList(props){
     return(
         <p>TAGS:
         {tags.map((tag, i)=>(
-            <p key={i}> {tag.label}, </p>
+            <Button  size={'sm'} variant={'link'} key={i}> {tag.label}, </Button>
         ))
     }   </p>)
 }
 
 function PostNav(props){
-return( <Card>
-    <ButtonGroup>
+return( <Container>
+    <ButtonGroup className="centered">
         <Button variant="secondary" onClick={props.prev}>Previous 5 Entries</Button><Button variant="primary" onClick={props.hom}>Refresh</Button><Button variant="secondary" onClick={props.fwd}>Next 5 Entries</Button>
     </ButtonGroup>
         {props.showList.length ? props.showList.map(
-            post=> <Card.Body key={post.id}>
+            post=> <Card  key={post.id}>
+                <Card.Body>
                 <Card.Title>Title: {post.title}</Card.Title>
-                <Card.Subtitle>{post.body.slice(0,50)}...</Card.Subtitle>
+                <Card.Subtitle>{post.body.slice(0,100)}...</Card.Subtitle>
                 <Card.Subtitle>By: {post.author}</Card.Subtitle>
-                <Button variant="primary" onClick={props.gone}>Show Post</Button>
+                <Button variant="light" onClick={props.gone}>Read More</Button>
                 <TagList value={post.id}/>
-            </Card.Body>
-        ):<Card.Body><Card.Title>End of Archives!</Card.Title></Card.Body>}
-        <ButtonGroup>
+                </Card.Body>
+            </Card>
+        ):<Card><Card.Title>End of Archives!</Card.Title></Card>}
+        <ButtonGroup className="centered">
     <Button variant="secondary" onClick={props.prev}>Previous 5 Entries</Button><Button variant="primary" onClick={props.hom}>Refresh</Button><Button variant="secondary" onClick={props.fwd}>Next 5 Entries</Button>
         </ButtonGroup>
-        </Card>)
+        </Container>)
     }
-
-function Placeholder(){
-    return(<div>Show Post Component goes here lol</div>)
-}
 
 class PostList extends React.Component {
           constructor(props) {
           super(props)
           this.state = {
-          posts: [], errorMessage: "", display: [], step: 0, isHidden: false
+              posts: [],
+              errorMessage: "",
+              display: [],
+              step: 0,
+              isHidden: false,
+              currentBody: "",
+              currentId:1
           }
           this.fwdClick = this.fwdClick.bind(this);
           this.prevClick = this.prevClick.bind(this);
@@ -101,7 +106,7 @@ class PostList extends React.Component {
               this.setState({isHidden:false, step: 0, display: this.state.posts.slice(0, 5)})
           }
 
-          bodyClick() {
+          bodyClick(i) {
               this.setState({isHidden:true})
           }
 
@@ -111,7 +116,7 @@ class PostList extends React.Component {
                         <Col xs={6}>{!this.state.isHidden &&
                         <PostNav showList={this.state.display} prev={this.prevClick}
                                  hom={this.homeClick} fwd={this.fwdClick} gone={this.bodyClick}/>}
-                            {this.state.isHidden && <Placeholder/>}</Col>
+                            {this.state.isHidden && <Comments value={this.state.currentId} display={this.state.currentBody}/>}</Col>
                         <Col><TagCloud filter={this.tagClick}/></Col>
                         </Row>
                     </Container>)

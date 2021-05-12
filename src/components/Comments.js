@@ -1,8 +1,12 @@
 import axios from 'axios'
+import React from 'react';
 import {Component} from "react";
+import Button from 'react-bootstrap/Button';
+import {ButtonGroup, Container} from "react-bootstrap";
+import Card from 'react-bootstrap/Card';
 
 
-class Comments extends Component{
+class Comments extends React.Component{
     constructor(props){
         super(props)
         this.state={
@@ -12,7 +16,8 @@ class Comments extends Component{
     }
 
     componentDidMount(){
-        axios.get('https://hephaestus-backendv1.herokuapp.com/comments')
+        const address='https://hephaestus-backendv1.herokuapp.com/comments/bypost/'+this.props.value;
+        axios.get(address)
             .then(response => {
                 console.log(response)
                 this.setState({comments:response.data})
@@ -25,21 +30,20 @@ class Comments extends Component{
 
     render() {
         return (
-            <div className="com">
+            <Card>
                 {
                     this.state.comments.length ? this.state.comments.map(
                         comment=>
-                            <div className="comDisplay" key={comment.id}>
-                                <p>Comment ID: {comment.id}</p>
-                                <p>Body: {comment.body}</p>
-                                <p>By: {comment.author}</p>
-                                {/*<p>Blog ID: {post.id}</p>*/}
-                            </div>):
+                            <Card.Body className="comDisplay" key={comment.id}>
+                                <Card.Subtitle>Comment ID: {comment.id}</Card.Subtitle>
+                                <Card.Title>Body: {comment.body}</Card.Title>
+                                <Card.Subtitle>By: {comment.author}</Card.Subtitle>
+                            </Card.Body>):
                         null
                 }
-            </div>
+            </Card>
         )
     }
 }
 
-export default Comments
+export default Comments;

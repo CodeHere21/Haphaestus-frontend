@@ -20,6 +20,9 @@ code {
 .centered{
   text-align:center;
 }
+.right{
+  text-align:right;
+}
 
 h2{
   font-size: 40px;
