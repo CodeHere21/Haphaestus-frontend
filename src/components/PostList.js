@@ -28,9 +28,13 @@ function TagList(props){
 
 function PostNav(props){
 return( <Card>
+    <ButtonGroup>
+        <Button variant="secondary" onClick={props.prev}>Previous 5 Entries</Button><Button variant="primary" onClick={props.hom}>Refresh</Button><Button variant="secondary" onClick={props.fwd}>Next 5 Entries</Button>
+    </ButtonGroup>
         {props.showList.length ? props.showList.map(
-            post=> <Card.Body  key={post.id}>
+            post=> <Card.Body key={post.id}>
                 <Card.Title>Title: {post.title}</Card.Title>
+                <Card.Subtitle>{post.body.slice(0,50)}...</Card.Subtitle>
                 <Card.Subtitle>By: {post.author}</Card.Subtitle>
                 <Button variant="primary" onClick={props.gone}>Show Post</Button>
                 <TagList value={post.id}/>
@@ -104,7 +108,7 @@ class PostList extends React.Component {
           render(){
                     return (<Container>
                         <Row>
-                        <Col>{!this.state.isHidden &&
+                        <Col xs={6}>{!this.state.isHidden &&
                         <PostNav showList={this.state.display} prev={this.prevClick}
                                  hom={this.homeClick} fwd={this.fwdClick} gone={this.bodyClick}/>}
                             {this.state.isHidden && <Placeholder/>}</Col>

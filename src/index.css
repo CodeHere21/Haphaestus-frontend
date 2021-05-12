@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url(galaxy.jpeg);
 }
 
 code {
@@ -12,48 +13,9 @@ code {
     monospace;
 }
 
-div{
-
-}
-
 .display{
   background-color: #fbcf61;
-
 }
-.left{
-  padding: 30px;
-  height: 100%;
-  width: 50%;
-  position: absolute;
-  z-index: 1;
-  top: 200px;
-  overflow-x: hidden;
-  left: 0;
-}
-
-
-.right{
-  background-color: #b3fb61;
-  padding: 20px;
-  height: 30%;
-  width: 30%;
-  z-index: 1;
-  bottom: 1000px;
-  overflow-x: hidden;
-  right:-700px;
-}
-
-.newPost{
-  background-color: #b3fb61;
-  padding: 10px;
-  height: 20%;
-  width: 20%;
-  position: absolute;
-  z-index: 1;
-  top: 300px;
-  right: 150px;
-}
-
 
 .centered{
   text-align:center;
@@ -63,6 +25,14 @@ h2{
   font-size: 40px;
 }
 
+.upSpace{
+  padding-top: 10px;
+}
+
 .gitLink{
   font-size: 20px;
+}
+
+.taggy{
+  background-image: url(cloud2.jpg);
 }
