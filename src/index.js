@@ -10,8 +10,6 @@ ReactDOM.render(
   <React.StrictMode>
       <Navigation/>
       <br/>
-
-      <br/>
       <PostList/>
   </React.StrictMode>,
   document.getElementById('root')

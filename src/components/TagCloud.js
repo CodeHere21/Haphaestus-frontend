@@ -26,16 +26,16 @@ class TagCloud extends React.Component{
     }
     render() {
         return (
-            <Card>
+            <Card className={"taggy"}>
                 <Card.Body>
                 <Card.Title className="centered">TAG CLOUD</Card.Title>
                 {
                     this.state.tags.length ? this.state.tags.map(
                         (tag, i)=>
-                            <Button variant="link" onClick={(e)=>this.props.filter(tag)} key={i}>#{tag}</Button>):
+                            <Button variant="light" onClick={(e)=>this.props.filter(tag)} key={i}>#{tag}</Button>):
                         <div><h3>Tags not found!</h3></div>
                 }
-                <div className="centered"><Button variant="secondary">Create New Post</Button></div>
+                <div className="centered upSpace"><Button variant="secondary">Create New Post</Button></div>
             </Card.Body>
             </Card>
         )
