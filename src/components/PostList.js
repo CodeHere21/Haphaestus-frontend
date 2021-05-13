@@ -6,7 +6,7 @@ import {ButtonGroup, Container} from "react-bootstrap";
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Comments from "./Comments";
+import {Link} from "react-router-dom";
 
 //component displays the list of tags each blog post has attached
 function TagList(props){
@@ -38,7 +38,7 @@ return( <Container>
                 <Card.Title>Title: {post.title}</Card.Title>
                 <Card.Subtitle>{post.body.slice(0,100)}...</Card.Subtitle>
                 <Card.Subtitle>By: {post.author}</Card.Subtitle>
-                <Button variant="light" onClick={props.gone}>Read More</Button>
+                <Link to='2'>Read More</Link>
                 <TagList value={post.id}/>
                 </Card.Body>
             </Card>
@@ -56,10 +56,7 @@ class PostList extends React.Component {
               posts: [],
               errorMessage: "",
               display: [],
-              step: 0,
-              isHidden: false,
-              currentBody: "",
-              currentId:1
+              step: 0
           }
           this.fwdClick = this.fwdClick.bind(this);
           this.prevClick = this.prevClick.bind(this);
@@ -106,17 +103,17 @@ class PostList extends React.Component {
               this.setState({isHidden:false, step: 0, display: this.state.posts.slice(0, 5)})
           }
 
-          bodyClick(i) {
-              this.setState({isHidden:true})
+          bodyClick() {
+
           }
 
           render(){
                     return (<Container>
                         <Row>
-                        <Col xs={6}>{!this.state.isHidden &&
+                        <Col xs={6}>
                         <PostNav showList={this.state.display} prev={this.prevClick}
-                                 hom={this.homeClick} fwd={this.fwdClick} gone={this.bodyClick}/>}
-                            {this.state.isHidden && <Comments value={this.state.currentId} display={this.state.currentBody}/>}</Col>
+                                 hom={this.homeClick} fwd={this.fwdClick} gone={this.bodyClick}/>
+                            </Col>
                         <Col><TagCloud filter={this.tagClick}/></Col>
                         </Row>
                     </Container>)

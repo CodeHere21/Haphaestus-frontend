@@ -3,15 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import PostList from "./components/PostList";
+import Comments from "./components/Comments";
 import Navigation from "./Navigation"
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Router>
       <Navigation/>
       <br/>
-      <PostList/>
-  </React.StrictMode>,
+
+      <Route path={"/"} exact component={PostList}/>
+      <Route path={"/:id"} children={<Comments />}/>
+  </Router>,
   document.getElementById('root')
 );
 

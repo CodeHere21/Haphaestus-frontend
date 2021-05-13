@@ -1,49 +1,33 @@
 import axios from 'axios'
-import React from 'react';
-import {Component} from "react";
-import Button from 'react-bootstrap/Button';
-import {ButtonGroup, Container} from "react-bootstrap";
+import React, {useEffect, useState} from 'react';
 import Card from 'react-bootstrap/Card';
+import {useParams} from "react-router-dom";
 
-
-class Comments extends React.Component{
-    constructor(props){
-        super(props)
-        this.state={
-            comments:[],
-            errorMessage:""
-        }
-    }
-
-    componentDidMount(){
-        const address='https://hephaestus-backendv1.herokuapp.com/comments/bypost/'+this.props.value;
-        axios.get(address)
+function Comments(){
+    let {id}=useParams();
+    const [comments, setComments]=useState([])
+    useEffect(() => {
+        axios.get(`https://hephaestus-backendv1.herokuapp.com/comments/bypost/${id}`)
             .then(response => {
                 console.log(response)
-                this.setState({comments:response.data})
-            })
-            .catch(error=>{
-                console.log(error)
-                this.setState({errorMessage:"We got a problem"})
-            })
-    }
+                setComments(response.data)
+            }).catch(err=>{console.log(err)})
+    })
 
-    render() {
-        return (
-            <Card>
-                {
-                    this.state.comments.length ? this.state.comments.map(
-                        comment=>
-                            <Card.Body className="comDisplay" key={comment.id}>
-                                <Card.Subtitle>Comment ID: {comment.id}</Card.Subtitle>
-                                <Card.Title>Body: {comment.body}</Card.Title>
-                                <Card.Subtitle>By: {comment.author}</Card.Subtitle>
-                            </Card.Body>):
-                        null
-                }
-            </Card>
-        )
+    return(
+        <Card>
+            {
+                comments.map(
+                    comment=>
+                        <Card.Body className="comDisplay" key={comment.id}>
+                            <Card.Subtitle>Comment ID: {comment.id}</Card.Subtitle>
+                            <Card.Title>Body: {comment.body}</Card.Title>
+                            <Card.Subtitle>By: {comment.author}</Card.Subtitle>
+                        </Card.Body>)
+            }
+        </Card>
+    )
+
     }
-}
 
 export default Comments;
