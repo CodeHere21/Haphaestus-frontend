@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Container, Form, FormControl, Nav, Navbar} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Navigation.css';
+import './CommentBox.css';
 
 const Navigation = () => {
     return (

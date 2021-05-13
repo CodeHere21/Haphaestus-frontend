@@ -4,6 +4,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import PostList from "./components/PostList";
 import Navigation from "./Navigation"
+import CommentBox from "./components/CommentBox"
 
 
 ReactDOM.render(
@@ -11,6 +12,7 @@ ReactDOM.render(
       <Navigation/>
       <br/>
       <PostList/>
+      <CommentBox/>
   </React.StrictMode>,
   document.getElementById('root')
 );
