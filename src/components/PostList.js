@@ -7,7 +7,7 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import {Link} from "react-router-dom";
-import {cleanup} from "@testing-library/react";
+
 
 //component displays the list of tags each blog post has attached
 function TagList(props){
