@@ -13,7 +13,6 @@ ReactDOM.render(
   <Router>
       <Navigation/>
       <br/>
-      <PostList/>
       <Route path={"/"} exact component={PostList}/>
       <Route path={"/:id"} children={<Comments />}/>
   </Router>,
