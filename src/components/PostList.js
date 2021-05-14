@@ -15,7 +15,6 @@ function TagList(props){
     useEffect(() => {
         axios.get(tagAddress)
         .then(response => {
-            console.log(response)
             setTags(response.data)
         }).catch(err=>{console.log(err)})
     })
@@ -70,7 +69,6 @@ class PostList extends React.Component {
           componentDidMount() {
                 axios.get('https://hephaestus-backendv1.herokuapp.com/posts')
                 .then(response => {
-                console.log(response)
                 this.setState({posts: response.data.reverse(), display: response.data.slice(0, 5)})
                 })
                 .catch(error => {
@@ -93,7 +91,6 @@ class PostList extends React.Component {
               const filter = 'https://hephaestus-backendv1.herokuapp.com/posts/bytag/' + i;
               axios.get(filter)
                   .then(response => {
-                    console.log(response)
                     this.setState({isHidden:false, step: 0, display: response.data})
                 })
                     .catch(error => {
