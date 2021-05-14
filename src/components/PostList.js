@@ -37,8 +37,10 @@ return( <Container>
                 <Card.Body>
                 <Card.Title>Title: {post.title}</Card.Title>
                 <Card.Subtitle>{post.body.slice(0,100)}...</Card.Subtitle>
+                    <br/>
                 <Card.Subtitle>By: {post.author}</Card.Subtitle>
-                <Link to='2'>Read More</Link>
+                    <br/>
+                <Link to={`/${post.id}`}>Read More</Link>
                 <TagList value={post.id}/>
                 </Card.Body>
             </Card>
