@@ -1,70 +1,44 @@
 import {Form} from "react-bootstrap";
 import axios from 'axios'
-import React from 'react';
+import React, {useState} from 'react';
 import Button from "react-bootstrap/Button";
 
 
-class CommentBox extends React.Component {
+function CommentBox (props){
+    const address='https://hephaestus-backendv1.herokuapp.com/comments/'+props.toPost;
+    const [author, setAuthor] = useState(),
+     [body, setBody] = useState(),
+        authorHandler = e => setAuthor(e.target.value),
+        bodyHandler = e => setBody(e.target.value)
 
-    constructor(props) {
-        super(props);
-        this.state = {comments: [], errorMessage:"" };
+        const onFormSubmit = e => {
+        const myDate = new Date();
+        const postInfo = {body: body, author: author,  writtenOn: myDate, postId:props.toPost};
+        axios.post(address, postInfo)
+            .then()
+        e.preventDefault();
     }
 
-    componentDidMount() {
-        const address='https://hephaestus-backendv1.herokuapp.com/posts/{id}'+this.props.value;
-        axios.get(address)
-            .then(response => {
-                console.log(response)
-                this.setState({comments:response.data})
-            })
-            .catch(error=>{
-                console.log(error)
-                this.setState({errorMessage:"We got a problem"})
-            })
-    }
-
-    render (){
         return (
-
-            <Form className="form-inline">
+            <Form className="form-inline" onSubmit={onFormSubmit}>
                 <Form.Group controlId="formBasicName">
-                    <Form.Label>Comments</Form.Label>
-                    <Form.Control type="userName" placeholder="Enter name" />
+                    <Form.Label>Enter Name</Form.Label>
+                    <Form.Control type="text"  onChange={authorHandler} placeholder="Name goes here" />
+                    <Form.Text>What do you want us to call you?</Form.Text>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicComment">
-
-                    <br/>
-                    <Form.Control type="comment" placeholder="Please say something..." />
+                    <Form.Label>Enter Comment</Form.Label>
+                    <Form.Control type="text" onChange={bodyHandler} placeholder="Text goes here" />
+                    <Form.Text>What do you wanna say?</Form.Text>
 
                 </Form.Group>
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
             </Form>
-
-
-
         )
-    }
 
 }
+
 export default CommentBox;
-
-
-
-// return (
-//     <div id="add-comment-form">
-//         <h3>Add a Comment</h3>
-//         <label>
-//             Name:
-//             <input type="text" value={name} onChange={(event) => setName(event.target.value)} />
-//         </label>
-//         <label>
-//             Comment:
-//             <textarea rows="4" cols="50" value={commentText} onChange={(event) => setCommentText(event.target.value)} />
-//         </label>
-//         <button onClick={() => addComment()}>Add Comment</button>
-//     </div>
-// );

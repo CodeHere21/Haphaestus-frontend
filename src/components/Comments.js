@@ -1,9 +1,9 @@
 import axios from 'axios'
 import React, {useEffect, useState} from 'react';
-import {useParams, useLocation} from "react-router-dom";
-import Button from 'react-bootstrap/Button';
+import {useParams} from "react-router-dom";
 import {Container, Col, Row} from "react-bootstrap";
 import Card from 'react-bootstrap/Card';
+import CommentBox from "./CommentBox";
 
 function Comments(){
     let {id}=useParams();
@@ -12,12 +12,10 @@ function Comments(){
     useEffect(() => {
         axios.get(`https://hephaestus-backendv1.herokuapp.com/comments/bypost/${id}`)
             .then(response => {
-                console.log(response)
                 setComments(response.data)
             }).catch(err=>{console.log(err)})
         axios.get(`https://hephaestus-backendv1.herokuapp.com/posts/${id}`)
             .then(response => {
-                console.log(response)
                 setPost(response.data)
             }).catch(err=>{console.log(err)})
     })
@@ -37,15 +35,15 @@ function Comments(){
                 <Row>
                 <Col md={{ span: 6, offset: 3 }}>
         <Card>
-            {
-                comments.map(
+            {comments.length ? comments.map(
                     comment=>
                         <Card.Body className="comDisplay" key={comment.id}>
                             <Card.Subtitle>Body: {comment.body}</Card.Subtitle>
                             <Card.Subtitle>By: {comment.author}</Card.Subtitle>
-                        </Card.Body>)
+                        </Card.Body>):<Card.Body>Be the first to comment!</Card.Body>
             }
         </Card></Col></Row>
+            <Row><CommentBox toPost={post.id}/></Row>
         </Container>
     )
 
