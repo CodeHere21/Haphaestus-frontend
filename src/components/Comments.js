@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom";
 import {Container, Col, Row} from "react-bootstrap";
 import Card from 'react-bootstrap/Card';
 import CommentBox from "./CommentBox";
+import {cleanup} from "@testing-library/react";
 
 function Comments(){
     let {id}=useParams();
@@ -18,7 +19,7 @@ function Comments(){
             .then(response => {
                 setPost(response.data)
             }).catch(err=>{console.log(err)})
-    })
+    },[]);
 
     return(
         <Container>

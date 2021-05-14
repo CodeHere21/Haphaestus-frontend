@@ -7,17 +7,19 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import {Link} from "react-router-dom";
+import {cleanup} from "@testing-library/react";
 
 //component displays the list of tags each blog post has attached
 function TagList(props){
     const tagAddress='https://hephaestus-backendv1.herokuapp.com/tags/bypost/'+props.value;
     const [tags, setTags]=useState([])
     useEffect(() => {
+
         axios.get(tagAddress)
         .then(response => {
             setTags(response.data)
         }).catch(err=>{console.log(err)})
-    })
+    },[]);
     return(
         <p>TAGS:
         {tags.map((tag, i)=>(
