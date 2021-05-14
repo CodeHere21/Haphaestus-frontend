@@ -6,13 +6,14 @@ import PostList from "./components/PostList";
 import Comments from "./components/Comments";
 import Navigation from "./Navigation"
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import CommentBox from "./components/CommentBox"
 
 
 ReactDOM.render(
   <Router>
       <Navigation/>
       <br/>
-
+      <PostList/>
       <Route path={"/"} exact component={PostList}/>
       <Route path={"/:id"} children={<Comments />}/>
   </Router>,
