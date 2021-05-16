@@ -41,7 +41,7 @@ return( <Container>
                     <br/>
                 <Card.Subtitle>By: {post.author}</Card.Subtitle>
                     <br/>
-                <Link to={`/${post.id}`}>Read More</Link>
+                <Link to={`/showpost/${post.id}`}>Read More</Link>
                 <TagList value={post.id}/>
                 </Card.Body>
             </Card>

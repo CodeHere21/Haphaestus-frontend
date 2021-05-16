@@ -5,9 +5,9 @@ import Button from "react-bootstrap/Button";
 
 
 function CommentBox (props){
-    const address='https://hephaestus-backendv1.herokuapp.com/comments/'+props.toPost;
     const [author, setAuthor] = useState(),
      [body, setBody] = useState(),
+        [r, setR ] = useState(),
         authorHandler = e => setAuthor(e.target.value),
         bodyHandler = e => setBody(e.target.value)
 
@@ -17,7 +17,10 @@ function CommentBox (props){
         const myDate = new Date().toISOString().slice(0, 10).replace('T', ' ');
         const postInfo = {body: body, author: author,  writtenOn: myDate, postId:num};
         axios.post('https://hephaestus-backendv1.herokuapp.com/comments/', postInfo)
-            .then(response => console.log(response))
+            .then(response => {
+                console.log(response)
+                setR(response.data)
+            })
             .catch(err=>{console.log(err)})
 
     }

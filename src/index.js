@@ -6,17 +6,16 @@ import PostList from "./components/PostList";
 import Comments from "./components/Comments";
 import Navigation from "./Navigation"
 import {BrowserRouter as Router, Route} from "react-router-dom";
-import CreatePost from "./components/CreatePost"
+import CreateNewPost from "./components/CreateNewPost"
 
 
 ReactDOM.render(
   <Router>
       <Navigation/>
       <br/>
-      <Route path={"/"} exact component={PostList}/>
-        <Route path={"/newpost"} exact component={CreatePost}/>
-      <Route path={"/:id"} children={<Comments />}/>
-
+          <Route path={"/"} exact component={PostList}/>
+          <Route path={"/newpost"} exact  component={CreateNewPost}/>
+          <Route path={"/showpost/:id"} exact children={<Comments />}/>
   </Router>,
   document.getElementById('root')
 );

@@ -40,6 +40,7 @@ function Comments(){
                         <Card.Body className="comDisplay" key={comment.id}>
                             <Card.Subtitle>Body: {comment.body}</Card.Subtitle>
                             <Card.Subtitle>By: {comment.author}</Card.Subtitle>
+                            <Card.Subtitle>Comment made: {comment.writtenOn}</Card.Subtitle>
                         </Card.Body>):<Card.Body>Be the first to comment!</Card.Body>
             }
         </Card></Col></Row>
