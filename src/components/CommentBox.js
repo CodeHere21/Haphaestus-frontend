@@ -6,13 +6,20 @@ import Button from "react-bootstrap/Button";
 
 class CommentBox extends React.Component {
 
+
     constructor(props) {
         super(props);
         this.state = {comments: [], errorMessage:"" };
+        this.handleAuthorChange = this.handleChange.bind(this, 'author');
+        this.handleCommentChange = this.handleChange.bind(this, 'comment');
+    }
+
+    handleChange(keyName, event) {
+        this.setState({[keyName]: event.target.value});
     }
 
     componentDidMount() {
-        const address='https://hephaestus-backendv1.herokuapp.com/posts/{id}'+this.props.value;
+        const address='https://hephaestus-backendv1.herokuapp.com/posts/'+this.props.value;
         axios.get(address)
             .then(response => {
                 console.log(response)
@@ -24,28 +31,33 @@ class CommentBox extends React.Component {
             })
     }
 
+    handleSubmit(event) {
+        const commentInfo = {author: this.state.author, comment: this.comment.body};
+        axios.post('https://hephaestus-backendv1.herokuapp.com/posts/{id}', commentInfo)
+            .then(response => this.setState({
+                comment: response.data.comment,
+                author: response.data.author
+            }));
+    }
+
     render (){
         return (
 
-            <Form className="form-inline">
+            <Form className="form-inline" onSubmit={this.handleSubmit}>
                 <Form.Group controlId="formBasicName">
                     <Form.Label>Comments</Form.Label>
-                    <Form.Control type="userName" placeholder="Enter name" />
+                    <Form.Control type="userName" placeholder="Enter name" onChange={this.handleAuthorChange}/>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicComment">
-
                     <br/>
-                    <Form.Control type="comment" placeholder="Please say something..." />
-
+                    <Form.Control type="comment" placeholder="Please say something..." onChange={this.handleCommentChange}/>
                 </Form.Group>
+
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
             </Form>
-
-
-
         )
     }
 
@@ -53,18 +65,3 @@ class CommentBox extends React.Component {
 export default CommentBox;
 
 
-
-// return (
-//     <div id="add-comment-form">
-//         <h3>Add a Comment</h3>
-//         <label>
-//             Name:
-//             <input type="text" value={name} onChange={(event) => setName(event.target.value)} />
-//         </label>
-//         <label>
-//             Comment:
-//             <textarea rows="4" cols="50" value={commentText} onChange={(event) => setCommentText(event.target.value)} />
-//         </label>
-//         <button onClick={() => addComment()}>Add Comment</button>
-//     </div>
-// );
