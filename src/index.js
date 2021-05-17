@@ -5,17 +5,17 @@ import reportWebVitals from './reportWebVitals';
 import PostList from "./components/PostList";
 import Comments from "./components/Comments";
 import Navigation from "./Navigation"
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import CommentBox from "./components/CommentBox"
+import {BrowserRouter as Router, Route} from "react-router-dom";
+import CreateNewPost from "./components/CreateNewPost"
 
 
 ReactDOM.render(
   <Router>
       <Navigation/>
       <br/>
-      <PostList/>
-      <Route path={"/"} exact component={PostList}/>
-      <Route path={"/:id"} children={<Comments />}/>
+          <Route path={"/"} exact component={PostList}/>
+          <Route path={"/newpost"} exact  component={CreateNewPost}/>
+          <Route path={"/showpost/:id"} exact children={<Comments />}/>
   </Router>,
   document.getElementById('root')
 );

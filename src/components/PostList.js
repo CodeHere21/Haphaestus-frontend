@@ -8,17 +8,18 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import {Link} from "react-router-dom";
 
+
 //component displays the list of tags each blog post has attached
 function TagList(props){
     const tagAddress='https://hephaestus-backendv1.herokuapp.com/tags/bypost/'+props.value;
     const [tags, setTags]=useState([])
     useEffect(() => {
+
         axios.get(tagAddress)
         .then(response => {
-            console.log(response)
             setTags(response.data)
         }).catch(err=>{console.log(err)})
-    })
+    },[]);
     return(
         <p>TAGS:
         {tags.map((tag, i)=>(
@@ -37,8 +38,10 @@ return( <Container>
                 <Card.Body>
                 <Card.Title>Title: {post.title}</Card.Title>
                 <Card.Subtitle>{post.body.slice(0,100)}...</Card.Subtitle>
+                    <br/>
                 <Card.Subtitle>By: {post.author}</Card.Subtitle>
-                <Link to='2'>Read More</Link>
+                    <br/>
+                <Link to={`/showpost/${post.id}`}>Read More</Link>
                 <TagList value={post.id}/>
                 </Card.Body>
             </Card>
@@ -68,7 +71,6 @@ class PostList extends React.Component {
           componentDidMount() {
                 axios.get('https://hephaestus-backendv1.herokuapp.com/posts')
                 .then(response => {
-                console.log(response)
                 this.setState({posts: response.data.reverse(), display: response.data.slice(0, 5)})
                 })
                 .catch(error => {
@@ -91,7 +93,6 @@ class PostList extends React.Component {
               const filter = 'https://hephaestus-backendv1.herokuapp.com/posts/bytag/' + i;
               axios.get(filter)
                   .then(response => {
-                    console.log(response)
                     this.setState({isHidden:false, step: 0, display: response.data})
                 })
                     .catch(error => {

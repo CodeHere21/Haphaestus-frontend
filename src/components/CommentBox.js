@@ -7,9 +7,11 @@ import Button from "react-bootstrap/Button";
 function CommentBox (props){
     const [author, setAuthor] = useState(),
         [body, setBody] = useState(),
+
         [r, setR ] = useState(),
         authorHandler = e => setAuthor(e.target.value),
         bodyHandler = e => setBody(e.target.value)
+
 
     const onFormSubmit = e => {
         e.preventDefault();
@@ -48,3 +50,4 @@ function CommentBox (props){
 }
 
 export default CommentBox;
+
