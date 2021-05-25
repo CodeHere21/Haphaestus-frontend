@@ -3,12 +3,12 @@
 Contributors: Abiel Figueroa (@Abielf), Monali Khandelwal (@Monali-Khandelwal), Hazel Becker (@hazelbecker), Lena Litouka (@CodeHere21)
 
 
-#Hephaestus
-##Blog Application
+# Hephaestus
+## Blog Application
 
 
 
-#####Table of Contents
+##### Table of Contents
 1. About The Project
  	* Tech Stack
 2. Getting Started
@@ -17,21 +17,21 @@ Contributors: Abiel Figueroa (@Abielf), Monali Khandelwal (@Monali-Khandelwal), 
  
 3. Documentation
 
-###About The Project
+### About The Project
 	
 Hephaestus is a blog application, which allows the user to publish a post, display the date that the post was published, and assigned a specific author assigned to the post and read different post blogs which are available on the website. These web-based services also allow users to tag content with specific categories, making it easier to search for all posts on topic within the blog. One of the best features is commenting, allows users to comment on a website, below blog post. 
 
-#####Tech Stack
+##### Tech Stack
 * Wireframe - Figma (www.figma.com)
 * Frontend - React
 * Business Logic - Java
 * Data Layer - H2
 * Cloud - Heroku
 
-###Getting Started
+### Getting Started
 
 Make sure you have IntelliJ Ultimate or any other IDE which supports programming in Java and React. 
-#####Prerequisities
+##### Prerequisities
 To get a local copy up and running please save 2 repositories on your local machine. 
 
 ```
@@ -47,7 +47,7 @@ Source code for backend can be find at
 
 Frontend can be find at [Hephaestus-frontend](https://github.com/Abielf/Haphaestus-frontend.git)
 
-#####Installation
+##### Installation
 This project was bootstrapped with Create React App.
 
 Available Scripts
@@ -90,12 +90,12 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use eject. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-#####Learn More
+##### Learn More
 You can learn more in the Create React App documentation.
 
 To learn React, check out the React documentation.
 
-#####Code Splitting
+##### Code Splitting
 This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
 Analyzing the Bundle Size
@@ -115,23 +115,23 @@ npm run build fails to minify
 ```
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-###Documentation
+### Documentation
 
 [Click Here](https://www.figma.com/file/sd5BzKWQp2X7qvBgYUd8FF/Untitled?node-id=9%3A21) - to find wireframe of the project, it shows the placement of elements in a user interface and demonstrate the intended layout and functionality of a solution. 
 
-#####UML Diagram
+##### UML Diagram
 ![BlogUML](Images/BlogUML.png)
 
-#####User Interface
-######Homepage
+##### User Interface
+###### Homepage
 
 ![Screen Shot 2021-05-15 at 9.18.23 PM](Images/Screen Shot 2021-05-15 at 9.18.23 PM.png)
-######Last page
+###### Last page
 ![Screen Shot 2021-05-15 at 9.20.28 PM](Images/Screen Shot 2021-05-15 at 9.20.28 PM.png)
 
-######Search by tag
+###### Search by tag
 ![Screen Shot 2021-05-15 at 9.20.39 PM](Images/Screen Shot 2021-05-15 at 9.20.39 PM.png)
 
-######Comment box
+###### Comment box
 ![Screen Shot 2021-05-15 at 9.22.46 PM](Images/Screen Shot 2021-05-15 at 9.22.46 PM.png)
 
